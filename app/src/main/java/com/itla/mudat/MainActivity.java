@@ -36,4 +36,8 @@ public class MainActivity extends AppCompatActivity {
         nombreEditText.setText("");
         Toast.makeText(this, "Limpio...", Toast.LENGTH_SHORT).show();
     }
+
+    public void registrarUsuarioButtonClick(View view) {
+        startActivity(new Intent(this, RegUsuarioActivity.class));
+    }
 }

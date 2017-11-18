@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/introduce_tu_nombre"/>
+                android:text="Nombre"/>
 
             <EditText
                 android:id="@+id/nombreEditText"
@@ -48,6 +48,13 @@
                     android:text="@string/limpiar_texto"/>
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/registrarUsuarioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="registrarUsuarioButtonClick"
+                android:text="Registrar Usuario"/>
         </LinearLayout>
     </LinearLayout>
 
