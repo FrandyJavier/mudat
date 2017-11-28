@@ -1,14 +1,15 @@
 package com.itla.mudat;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import com.itla.mudat.Entity.Usuario;
+import com.itla.mudat.entity.TipoUsuario;
+import com.itla.mudat.entity.Usuario;
+import com.itla.mudat.dao.UsuariosDbo;
 
 public class RegUsuarioActivity extends AppCompatActivity {
 
@@ -20,40 +21,45 @@ public class RegUsuarioActivity extends AppCompatActivity {
     private EditText claveEdit;
 
     public Usuario usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_usuario);
         usuario = new Usuario();
 
-        nombreEdit = (EditText) findViewById(R.id.editTextNombre);
-        tipoEdit = (EditText) findViewById(R.id.editTextTipo);
-        identificacionEdit = (EditText) findViewById(R.id.editTextIdentificador);
-        emailEdit = (EditText) findViewById(R.id.editTextEmail);
-        telefonoEdit = (EditText) findViewById(R.id.editTextTelefono);
-        claveEdit = (EditText) findViewById(R.id.editTextClave);
+        nombreEdit = findViewById(R.id.editTextNombre);
+        tipoEdit = findViewById(R.id.editTextTipo);
+        identificacionEdit = findViewById(R.id.editTextIdentificador);
+        emailEdit = findViewById(R.id.editTextEmail);
+        telefonoEdit = findViewById(R.id.editTextTelefono);
+        claveEdit = findViewById(R.id.editTextClave);
     }
 
-    public void guardarUsuarioClick(View view) {
-        if(!validarEntry(nombreEdit) || !validarEntry(identificacionEdit) ||
-                !validarEntry(emailEdit) || !validarEntry(telefonoEdit) ||
-                !validarEntry(claveEdit)){
+    public void guardarClick(View view) {
+        UsuariosDbo db = new UsuariosDbo(this);
+
+        if (!MainActivity.validarEntry(nombreEdit) || !MainActivity.validarEntry(identificacionEdit) ||
+                !MainActivity.validarEntry(emailEdit) || !MainActivity.validarEntry(telefonoEdit) ||
+                !MainActivity.validarEntry(claveEdit)) {
             return;
         }
 
         usuario.setNombre(nombreEdit.getText().toString());
+        usuario.setTipoUsuario(TipoUsuario.CLIENTE);
         usuario.setIdentificacion(Integer.parseInt(identificacionEdit.getText().toString()));
         usuario.setEmail(emailEdit.getText().toString());
         usuario.setTelefono(telefonoEdit.getText().toString());
         usuario.setClave(claveEdit.getText().toString());
+        usuario.setEstatus(true);
+
+        db.crear(usuario);
+
+        Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, VisualizarUsuariosActivity.class));
     }
 
-    public static boolean validarEntry(EditText entry){
-        if(entry.getText().length() <= 0){
-            entry.setError("Valor obligatorio");
-            return false;
-        }
-
-        return true;
+    public void verListadoClick(View view) {
+        startActivity(new Intent(this, VisualizarUsuariosActivity.class));
     }
 }

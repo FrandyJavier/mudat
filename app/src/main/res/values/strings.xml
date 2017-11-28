@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Mudat</string>
+
+    <string name="title_activity_reg_usuario">Registro de Usuario</string>
+    <string name="title_activity_reg_categorias">Registro de Categoria</string>
+    <string name="title_activity_reg_anuncios">Registro de Anuncio</string>
+
+    <string name="title_activity_cons_usuarios">Listado de Usuarios</string>
+    <string name="title_activity_cons_categorias">Listado de Categorias</string>
+    <string name="title_activity_cons_anuncios">Listado de Anuncios</string>
+
     <string name="click_para_guardar">Click para guardar</string>
     <string name="limpiar_texto">Limpiar texto</string>
-    <string name="title_activity_reg_usuario">Registro de Usuarios</string>
+    <string name="msjGuardo">Guardado correctamente</string>
 </resources>

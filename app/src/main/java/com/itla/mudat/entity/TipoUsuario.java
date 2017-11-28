@@ -1,4 +1,4 @@
-package com.itla.mudat.Entity;
+package com.itla.mudat.entity;
 
 /**
  * Created by Frandy Javier AP on 11/18/2017.

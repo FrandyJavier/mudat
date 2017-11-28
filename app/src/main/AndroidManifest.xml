@@ -18,16 +18,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".VisualizarActivity"
-            android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".RegUsuarioActivity"
-            android:parentActivityName=".MainActivity"
             android:label="@string/title_activity_reg_usuario"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RegCategoriaActivity"
+            android:label="@string/title_activity_reg_categorias"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".RegAnuncioActivity"
+            android:label="@string/title_activity_reg_anuncios"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".VisualizarUsuariosActivity"
+            android:label="@string/title_activity_cons_usuarios"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".VisualizarCategoriasActivity"
+            android:label="@string/title_activity_cons_categorias"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".VisualizarAnunciosActivity"
+            android:label="@string/title_activity_cons_anuncios"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

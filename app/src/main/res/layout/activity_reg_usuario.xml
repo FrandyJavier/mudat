@@ -105,13 +105,14 @@
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="guardarUsuarioClick"
-                        android:text="Guardar"/>
+                        android:onClick="guardarClick"
+                        android:text="  Guardar  "/>
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cancelar"/>
+                        android:onClick="verListadoClick"
+                        android:text="  Listado  "/>
 
                 </LinearLayout>
             </LinearLayout>

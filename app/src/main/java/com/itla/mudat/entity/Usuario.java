@@ -1,11 +1,11 @@
-package com.itla.mudat.Entity;
+package com.itla.mudat.entity;
 
 /**
  * Created by Frandy Javier AP on 11/18/2017.
  */
 
 public class Usuario {
-    Integer idUsuario;
+    Integer id;
     String nombre;
     TipoUsuario tipoUsuario;
     Integer identificacion;
@@ -14,11 +14,20 @@ public class Usuario {
     String clave;
     Boolean estatus;
 
+    public  static final String ID = "id";
+    public  static final String NOMBRE = "nombre";
+    public  static final String TIPO = "tipoUsuario";
+    public  static final String IDENTIFICACION = "identificacion";
+    public  static final String EMAIL = "email";
+    public  static final String TELEFONO = "telefono";
+    public  static final String CLAVE = "clave";
+    public  static final String ESTATUS = "estatus";
+
     public Usuario() {
     }
 
     public Usuario(Integer idUsuario, String nombre, TipoUsuario tipoUsuario, Integer identificacion, String email, String telefono, String clave, Boolean estatus) {
-        this.idUsuario = idUsuario;
+        this.id = idUsuario;
         this.nombre = nombre;
         this.tipoUsuario = tipoUsuario;
         this.identificacion = identificacion;
@@ -28,12 +37,12 @@ public class Usuario {
         this.estatus = estatus;
     }
 
-    public Integer getIdUsuario() {
-        return idUsuario;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -95,7 +104,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
-                "idUsuario=" + idUsuario +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", tipoUsuario=" + tipoUsuario +
                 ", identificacion=" + identificacion +
