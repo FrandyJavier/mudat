@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.itla.mudat.entity.TipoUsuario;
 import com.itla.mudat.entity.Usuario;
@@ -74,6 +75,8 @@ public class UsuariosDbo {
 
             cursor.moveToNext();
             usuarios.add(usuario);
+
+            Log.i(this.getClass().getSimpleName(),usuario.toString());
         }
 
         cursor.close();
