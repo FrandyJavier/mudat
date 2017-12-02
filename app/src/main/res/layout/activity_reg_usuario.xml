@@ -114,6 +114,14 @@
                         android:onClick="verListadoClick"
                         android:text="  Listado  "/>
 
+                    <Button
+                        android:id="@+id/borrarButton"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="borrarButtonClick"
+                        android:text="  Borrar  "/>
+
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

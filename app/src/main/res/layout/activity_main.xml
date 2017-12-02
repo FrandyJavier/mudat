@@ -21,24 +21,24 @@
 
             <Button
                 android:id="@+id/registrarUsuariosButton"
-                android:onClick="registrarUsuarioButtonClick"
+                android:onClick="consultaUsuarioButtonClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_activity_reg_usuario"/>
+                android:text="@string/title_activity_cons_usuarios"/>
 
             <Button
                 android:id="@+id/registrarCategoriasButton"
-                android:onClick="registrarCategoriaButtonClick"
+                android:onClick="consultaCategoriaButtonClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_activity_reg_categorias"/>
+                android:text="@string/title_activity_cons_categorias"/>
 
             <Button
                 android:id="@+id/registrarAnunciosButton"
-                android:onClick="registrarAnuncioButtonClick"
+                android:onClick="consultaAnuncioButtonClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_activity_reg_anuncios"/>
+                android:text="@string/title_activity_cons_anuncios"/>
 
             </LinearLayout>
     </LinearLayout>

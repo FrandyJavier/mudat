@@ -3,10 +3,7 @@ package com.itla.mudat.test;
 import android.test.InstrumentationTestCase;
 
 import com.itla.mudat.dao.CategoriasDbo;
-import com.itla.mudat.dao.UsuariosDbo;
 import com.itla.mudat.entity.Categoria;
-import com.itla.mudat.entity.TipoUsuario;
-import com.itla.mudat.entity.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

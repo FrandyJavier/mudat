@@ -1,12 +1,13 @@
 package com.itla.mudat.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Frandy Javier AP on 11/18/2017.
  */
 
-public class Anuncio {
+public class Anuncio   implements Serializable {
 
     Integer id;
     Categoria categoria;

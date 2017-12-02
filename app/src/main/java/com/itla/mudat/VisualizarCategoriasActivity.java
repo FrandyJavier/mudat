@@ -1,16 +1,17 @@
 package com.itla.mudat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.itla.mudat.dao.CategoriasDbo;
 import com.itla.mudat.dao.UsuariosDbo;
 import com.itla.mudat.entity.Categoria;
-import com.itla.mudat.entity.Usuario;
-
-import java.util.List;
+import com.itla.mudat.view.adapters.CategoriasListAdapter;
 
 public class VisualizarCategoriasActivity extends AppCompatActivity {
 
@@ -18,16 +19,28 @@ public class VisualizarCategoriasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_categorias);
+
         CategoriasDbo db = new CategoriasDbo(this);
 
-        List<Categoria> datos = db.listar();
         ListView list = findViewById(R.id.listviewDatos);
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        CategoriasListAdapter adapter = new CategoriasListAdapter(this, db.listar());
 
-        for (int x= 0; x <= datos.size() -1 ; x++){
-            adaptador.add(datos.get(x).getDescripcion());
-        }
+        list.setAdapter(adapter);
 
-        list.setAdapter(adaptador);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Categoria usuario = ((Categoria) arg0.getItemAtPosition(position));
+                Toast.makeText(VisualizarCategoriasActivity.this, "has hecho click sobre: " + usuario.getDescripcion(), Toast.LENGTH_LONG).show();
+
+                Intent i = new Intent(VisualizarCategoriasActivity.this, RegUsuarioActivity.class);
+                i.putExtra(Categoria.class.getSimpleName(), usuario);
+                startActivity(i);
+            }
+        });
+    }
+
+    public void crearCategoriaClick(View view) {
+        startActivity(new Intent(this, RegCategoriaActivity.class));
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,6 +35,21 @@ public class RegUsuarioActivity extends AppCompatActivity {
         emailEdit = findViewById(R.id.editTextEmail);
         telefonoEdit = findViewById(R.id.editTextTelefono);
         claveEdit = findViewById(R.id.editTextClave);
+
+        Bundle bundle = getIntent().getExtras();
+        Button borrarButton = findViewById(R.id.borrarButton);
+
+        if (bundle != null) {
+            usuario = (Usuario) bundle.getSerializable(Usuario.class.getSimpleName());
+            borrarButton.setVisibility(View.VISIBLE);
+
+            nombreEdit.setText(usuario.getNombre());
+            tipoEdit.setText(usuario.getTipoUsuario().toString());
+            identificacionEdit.setText(usuario.getIdentificacion().toString());
+            emailEdit.setText(usuario.getEmail());
+            telefonoEdit.setText(usuario.getEmail());
+            claveEdit.setText(usuario.getClave());
+        }
     }
 
     public void guardarClick(View view) {
@@ -53,7 +69,18 @@ public class RegUsuarioActivity extends AppCompatActivity {
         usuario.setClave(claveEdit.getText().toString());
         usuario.setEstatus(true);
 
-        db.crear(usuario);
+        long paso = 0;
+
+        if(usuario.getId() <= 0){
+           paso =  db.crear(usuario);
+        }else{
+            paso = db.editar(usuario);
+        }
+
+        if (paso < 0){
+            Toast.makeText(this, R.string.msjErrorGuardar, Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, VisualizarUsuariosActivity.class));
@@ -61,5 +88,14 @@ public class RegUsuarioActivity extends AppCompatActivity {
 
     public void verListadoClick(View view) {
         startActivity(new Intent(this, VisualizarUsuariosActivity.class));
+    }
+
+    public void borrarButtonClick(View view) {
+        UsuariosDbo db = new UsuariosDbo(this);
+
+        if(db.eliminar(usuario.getId()) >= 0){
+            Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, VisualizarUsuariosActivity.class));
+        }
     }
 }

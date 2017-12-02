@@ -9,6 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <Button
+            android:onClick="crearUsuarioClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/crear_nuevo"/>
+
         <ListView
             android:id="@+id/listviewDatos"
             android:layout_width="match_parent"

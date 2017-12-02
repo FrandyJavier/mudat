@@ -1,7 +1,9 @@
 package com.itla.mudat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -29,5 +31,9 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
         }
 
         list.setAdapter(adaptador);
+    }
+
+    public void crearAnuncioClick(View view) {
+        startActivity(new Intent(this, RegAnuncioActivity.class));
     }
 }

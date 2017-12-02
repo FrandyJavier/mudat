@@ -24,9 +24,17 @@ public class CategoriasDbo {
 
     public Categoria buscar(int id) {
         Categoria categoria = new Categoria();
+        List<Categoria> listado = this.listar();
 
+        int index;
         if ((double) id > 0) {
-            categoria = this.listar().get(id);
+            for (int x = 0; x < listado.size(); x++) {
+                index = x;
+                if (listado.get(index).getId() == id) {
+                    categoria = listado.get(index);
+                    break;
+                }
+            }
         }
 
         return categoria;
@@ -40,6 +48,25 @@ public class CategoriasDbo {
 
         long retorno = db.insert(Categoria.class.getSimpleName(), Categoria.IDCATEGORIA, values);
 
+        db.close();
+        return retorno;
+    }
+
+    public long editar(Categoria categoria) {
+        SQLiteDatabase db = connection.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Categoria.DESCRIPCION, categoria.getDescripcion());
+
+        long retorno = db.update(Categoria.class.getSimpleName(), values, Categoria.IDCATEGORIA + "= ?", new String[]{categoria.getId().toString()});
+
+        db.close();
+        return retorno;
+    }
+
+    public long eliminar(int id) {
+        SQLiteDatabase db = connection.getWritableDatabase();
+        long retorno = db.delete(Usuario.class.getSimpleName(), Categoria.IDCATEGORIA + "= ?", new String[]{String.valueOf(id)});
         db.close();
         return retorno;
     }

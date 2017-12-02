@@ -16,16 +16,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void registrarUsuarioButtonClick(View view) {
-        startActivity(new Intent(this, RegUsuarioActivity.class));
+    public void consultaUsuarioButtonClick(View view) {
+        startActivity(new Intent(this, VisualizarUsuariosActivity.class));
     }
 
-    public void registrarCategoriaButtonClick(View view) {
-        startActivity(new Intent(this, RegCategoriaActivity.class));
+    public void consultaCategoriaButtonClick(View view) {
+        startActivity(new Intent(this, VisualizarCategoriasActivity.class));
     }
 
-    public void registrarAnuncioButtonClick(View view) {
-        startActivity(new Intent(this, RegAnuncioActivity.class));
+    public void consultaAnuncioButtonClick(View view) {
+        startActivity(new Intent(this, VisualizarAnunciosActivity.class));
     }
 
     public static boolean validarEntry(EditText entry){

@@ -11,5 +11,7 @@
 
     <string name="click_para_guardar">Click para guardar</string>
     <string name="limpiar_texto">Limpiar texto</string>
+    <string name="msjErrorGuardar">Error al Guardar, Contacte a Soporte</string>
     <string name="msjGuardo">Guardado correctamente</string>
+    <string name="crear_nuevo">Crear Nuevo</string>
 </resources>
