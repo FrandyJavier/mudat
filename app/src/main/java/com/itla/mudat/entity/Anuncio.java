@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by Frandy Javier AP on 11/18/2017.
  */
 
-public class Anuncio   implements Serializable {
+public class Anuncio implements Serializable {
 
     Integer id;
     Categoria categoria;
@@ -30,6 +30,15 @@ public class Anuncio   implements Serializable {
     public static final String DETALLE = "detalle";
 
     public Anuncio() {
+        this.id = 0;
+        this.categoria = new Categoria();
+        this.idUsuario = new Usuario();
+        this.fecha = new Date();
+        this.condicion = "";
+        this.precio = 0.0;
+        this.titulo = "";
+        this.ubicacion = "";
+        this.detalle = "";
     }
 
     public Anuncio(Integer idAnuncio, Categoria categoria, Usuario idUsuario, Date fecha, String condicion, Double precio, String titulo, String ubicacion, String detalle) {

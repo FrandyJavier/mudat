@@ -21,17 +21,17 @@
         <activity
             android:name=".RegUsuarioActivity"
             android:label="@string/title_activity_reg_usuario"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".VisualizarUsuariosActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegCategoriaActivity"
             android:label="@string/title_activity_reg_categorias"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".VisualizarCategoriasActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".RegAnuncioActivity"
             android:label="@string/title_activity_reg_anuncios"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".VisualizarAnunciosActivity"
             android:theme="@style/AppTheme" />
 
         <activity

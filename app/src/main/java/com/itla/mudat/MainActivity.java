@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    public final static String NOMBRE = "nombre";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

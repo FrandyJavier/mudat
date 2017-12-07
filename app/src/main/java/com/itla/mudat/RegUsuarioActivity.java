@@ -1,11 +1,12 @@
 package com.itla.mudat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.itla.mudat.entity.TipoUsuario;
@@ -15,13 +16,14 @@ import com.itla.mudat.dao.UsuariosDbo;
 public class RegUsuarioActivity extends AppCompatActivity {
 
     private EditText nombreEdit;
-    private EditText tipoEdit;
+    private Spinner tipoUsuarioSpinner;
     private EditText identificacionEdit;
     private EditText emailEdit;
     private EditText telefonoEdit;
     private EditText claveEdit;
 
     public Usuario usuario;
+    private ArrayAdapter tipoUsuarioAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,16 @@ public class RegUsuarioActivity extends AppCompatActivity {
         usuario = new Usuario();
 
         nombreEdit = findViewById(R.id.editTextNombre);
-        tipoEdit = findViewById(R.id.editTextTipo);
         identificacionEdit = findViewById(R.id.editTextIdentificador);
         emailEdit = findViewById(R.id.editTextEmail);
         telefonoEdit = findViewById(R.id.editTextTelefono);
         claveEdit = findViewById(R.id.editTextClave);
+
+
+        tipoUsuarioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, TipoUsuario.values());
+
+        tipoUsuarioSpinner = findViewById(R.id.tipoUsuarioSpinner);
+        tipoUsuarioSpinner.setAdapter(tipoUsuarioAdapter);
 
         Bundle bundle = getIntent().getExtras();
         Button borrarButton = findViewById(R.id.borrarButton);
@@ -44,8 +51,8 @@ public class RegUsuarioActivity extends AppCompatActivity {
             borrarButton.setVisibility(View.VISIBLE);
 
             nombreEdit.setText(usuario.getNombre());
-            tipoEdit.setText(usuario.getTipoUsuario().toString());
-            identificacionEdit.setText(usuario.getIdentificacion().toString());
+            tipoUsuarioSpinner.setSelection(tipoUsuarioAdapter.getPosition(usuario.getTipoUsuario()));
+            identificacionEdit.setText(usuario.getIdentificacion());
             emailEdit.setText(usuario.getEmail());
             telefonoEdit.setText(usuario.getEmail());
             claveEdit.setText(usuario.getClave());
@@ -62,8 +69,8 @@ public class RegUsuarioActivity extends AppCompatActivity {
         }
 
         usuario.setNombre(nombreEdit.getText().toString());
-        usuario.setTipoUsuario(TipoUsuario.CLIENTE);
-        usuario.setIdentificacion(Integer.parseInt(identificacionEdit.getText().toString()));
+        usuario.setTipoUsuario(TipoUsuario.valueOf(tipoUsuarioSpinner.getSelectedItem().toString()));
+        usuario.setIdentificacion(identificacionEdit.getText().toString());
         usuario.setEmail(emailEdit.getText().toString());
         usuario.setTelefono(telefonoEdit.getText().toString());
         usuario.setClave(claveEdit.getText().toString());
@@ -83,11 +90,7 @@ public class RegUsuarioActivity extends AppCompatActivity {
         }
 
         Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, VisualizarUsuariosActivity.class));
-    }
-
-    public void verListadoClick(View view) {
-        startActivity(new Intent(this, VisualizarUsuariosActivity.class));
+        finish();
     }
 
     public void borrarButtonClick(View view) {
@@ -95,7 +98,7 @@ public class RegUsuarioActivity extends AppCompatActivity {
 
         if(db.eliminar(usuario.getId()) >= 0){
             Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, VisualizarUsuariosActivity.class));
+            finish();
         }
     }
 }

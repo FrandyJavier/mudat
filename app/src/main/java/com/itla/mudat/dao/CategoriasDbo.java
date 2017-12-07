@@ -66,7 +66,7 @@ public class CategoriasDbo {
 
     public long eliminar(int id) {
         SQLiteDatabase db = connection.getWritableDatabase();
-        long retorno = db.delete(Usuario.class.getSimpleName(), Categoria.IDCATEGORIA + "= ?", new String[]{String.valueOf(id)});
+        long retorno = db.delete(Categoria.class.getSimpleName(), Categoria.IDCATEGORIA + "= ?", new String[]{String.valueOf(id)});
         db.close();
         return retorno;
     }

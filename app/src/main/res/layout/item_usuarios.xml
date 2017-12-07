@@ -49,9 +49,9 @@
         android:id="@+id/tv_signal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
         android:layout_below="@+id/itemNombre"
         android:gravity="right"
+        android:paddingTop="10dp"
         android:text=">"
         android:textColor="@android:color/darker_gray"
         android:textSize="30sp" />

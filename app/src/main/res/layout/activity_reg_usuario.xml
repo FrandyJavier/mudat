@@ -40,11 +40,11 @@
                     android:textSize="15sp"
                     android:text="Tipo" />
 
-                <EditText
-                    android:id="@+id/editTextTipo"
-                    android:inputType="textPersonName"
+                <Spinner
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/tipoUsuarioSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"/>
 
 
                 <TextView
@@ -107,12 +107,6 @@
                         android:layout_height="wrap_content"
                         android:onClick="guardarClick"
                         android:text="  Guardar  "/>
-
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onClick="verListadoClick"
-                        android:text="  Listado  "/>
 
                     <Button
                         android:id="@+id/borrarButton"

@@ -4,12 +4,22 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/itemNombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Descripcion: "
+        android:textColor="@android:color/darker_gray"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/itemDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/itemNombre"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="10dp"
-        android:text="Descripcion: "
+        android:layout_marginStart="10dp"
+        android:text="Prueba de la descripcion"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
 
@@ -17,7 +27,7 @@
         android:id="@+id/tv_signal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="1dp"
+        android:paddingTop="10dp"
         android:gravity="right"
         android:text=">"
         android:textColor="@android:color/darker_gray"

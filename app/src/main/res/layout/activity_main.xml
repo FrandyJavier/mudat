@@ -1,46 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.itla.mudat.MainActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/registrarUsuariosButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:layout_margin="10dp">
+            android:onClick="consultaUsuarioButtonClick"
+            android:text="@string/title_activity_cons_usuarios" />
 
-            <Button
-                android:id="@+id/registrarUsuariosButton"
-                android:onClick="consultaUsuarioButtonClick"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_activity_cons_usuarios"/>
+        <Button
+            android:id="@+id/registrarCategoriasButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="consultaCategoriaButtonClick"
+            android:text="@string/title_activity_cons_categorias" />
 
-            <Button
-                android:id="@+id/registrarCategoriasButton"
-                android:onClick="consultaCategoriaButtonClick"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_activity_cons_categorias"/>
+        <Button
+            android:id="@+id/registrarAnunciosButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="consultaAnuncioButtonClick"
+            android:text="@string/title_activity_cons_anuncios" />
 
-            <Button
-                android:id="@+id/registrarAnunciosButton"
-                android:onClick="consultaAnuncioButtonClick"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/title_activity_cons_anuncios"/>
-
-            </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

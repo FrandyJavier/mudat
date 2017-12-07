@@ -10,7 +10,7 @@ public class Usuario  implements Serializable {
     Integer id;
     String nombre;
     TipoUsuario tipoUsuario;
-    Integer identificacion;
+    String identificacion;
     String email;
     String telefono;
     String clave;
@@ -26,9 +26,17 @@ public class Usuario  implements Serializable {
     public  static final String ESTATUS = "estatus";
 
     public Usuario() {
+        this.id = 0;
+        this.nombre = "";
+        this.tipoUsuario = TipoUsuario.CLIENTE;
+        this.identificacion = "";
+        this.email = "";
+        this.telefono = "";
+        this.clave = "";
+        this.estatus = true;
     }
 
-    public Usuario(Integer idUsuario, String nombre, TipoUsuario tipoUsuario, Integer identificacion, String email, String telefono, String clave, Boolean estatus) {
+    public Usuario(Integer idUsuario, String nombre, TipoUsuario tipoUsuario, String identificacion, String email, String telefono, String clave, Boolean estatus) {
         this.id = idUsuario;
         this.nombre = nombre;
         this.tipoUsuario = tipoUsuario;
@@ -63,11 +71,11 @@ public class Usuario  implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Integer getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(Integer identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 

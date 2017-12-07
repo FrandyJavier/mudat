@@ -15,6 +15,6 @@ public class RegAnuncioActivity extends AppCompatActivity {
     public void guardarClick(View view) {
     }
 
-    public void verListadoClick(View view) {
+    public void borrarButtonClick(View view) {
     }
 }

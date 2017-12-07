@@ -20,6 +20,10 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_anuncios);
+        buscarDatos();
+    }
+
+    private void buscarDatos() {
         AnunciosDbo db = new AnunciosDbo(this);
 
         List<Anuncio> datos = db.listar();
@@ -31,6 +35,12 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
         }
 
         list.setAdapter(adaptador);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        buscarDatos();
     }
 
     public void crearAnuncioClick(View view) {

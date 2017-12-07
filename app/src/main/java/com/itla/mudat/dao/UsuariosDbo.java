@@ -90,7 +90,7 @@ public class UsuariosDbo {
             usuario.setId(cursor.getInt(cursor.getColumnIndex(Usuario.ID)));
             usuario.setNombre(cursor.getString(cursor.getColumnIndex(Usuario.NOMBRE)));
             usuario.setTipoUsuario(TipoUsuario.valueOf(cursor.getString(cursor.getColumnIndex(Usuario.TIPO))));
-            usuario.setIdentificacion(cursor.getInt(cursor.getColumnIndex(Usuario.IDENTIFICACION)));
+            usuario.setIdentificacion(cursor.getString(cursor.getColumnIndex(Usuario.IDENTIFICACION)));
             usuario.setEmail(cursor.getString(cursor.getColumnIndex(Usuario.EMAIL)));
             usuario.setTelefono(cursor.getString(cursor.getColumnIndex(Usuario.TELEFONO)));
             usuario.setClave(cursor.getString(cursor.getColumnIndex(Usuario.CLAVE)));

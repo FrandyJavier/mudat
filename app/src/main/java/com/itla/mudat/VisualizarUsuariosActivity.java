@@ -3,6 +3,7 @@ package com.itla.mudat;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,6 +24,16 @@ public class VisualizarUsuariosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_usuarios);
 
+        buscarDatos();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        buscarDatos();
+    }
+
+    private void buscarDatos() {
         UsuariosDbo db = new UsuariosDbo(this);
 
         ListView list = findViewById(R.id.listviewDatos);
@@ -34,10 +45,14 @@ public class VisualizarUsuariosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Usuario usuario = ((Usuario) arg0.getItemAtPosition(position));
-                Toast.makeText(VisualizarUsuariosActivity.this, "has hecho click sobre: " + usuario.getNombre(), Toast.LENGTH_LONG).show();
+                Log.i(VisualizarUsuariosActivity.class.getSimpleName(), "has hecho click sobre: " + usuario.getNombre());
 
                 Intent i = new Intent(VisualizarUsuariosActivity.this, RegUsuarioActivity.class);
-                i.putExtra(Usuario.class.getSimpleName(), usuario);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Usuario.class.getSimpleName(), usuario);
+
+                i.putExtras(bundle);
                 startActivity(i);
             }
         });

@@ -20,21 +20,34 @@ public class VisualizarCategoriasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_categorias);
 
+        buscarDatos();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        buscarDatos();
+    }
+
+    private void buscarDatos() {
         CategoriasDbo db = new CategoriasDbo(this);
 
         ListView list = findViewById(R.id.listviewDatos);
         CategoriasListAdapter adapter = new CategoriasListAdapter(this, db.listar());
-
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                Categoria usuario = ((Categoria) arg0.getItemAtPosition(position));
-                Toast.makeText(VisualizarCategoriasActivity.this, "has hecho click sobre: " + usuario.getDescripcion(), Toast.LENGTH_LONG).show();
+                Categoria categoria = ((Categoria) arg0.getItemAtPosition(position));
+                Toast.makeText(VisualizarCategoriasActivity.this, "has hecho click sobre: " + categoria.getDescripcion(), Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(VisualizarCategoriasActivity.this, RegUsuarioActivity.class);
-                i.putExtra(Categoria.class.getSimpleName(), usuario);
+                Intent i = new Intent(VisualizarCategoriasActivity.this, RegCategoriaActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Categoria.class.getSimpleName(), categoria);
+
+                i.putExtras(bundle);
                 startActivity(i);
             }
         });

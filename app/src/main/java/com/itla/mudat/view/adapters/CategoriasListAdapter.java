@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.itla.mudat.R;
 import com.itla.mudat.entity.Categoria;
-import com.itla.mudat.entity.Usuario;
 
 import java.util.List;
 
@@ -49,13 +48,11 @@ public class CategoriasListAdapter  extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         if (view == null) {
-            view = View.inflate(context.getApplicationContext(), R.layout.item_descripcion, null);
+            view = View.inflate(context.getApplicationContext(), R.layout.item_categorias, null);
         }
 
         TextView descripcion =  view.findViewById(R.id.itemDescripcion);
-
-        descripcion.setText("Descripcion: " + getItemNombre(position));
-
+        descripcion.setText(getItemNombre(position));
         return view;
     }
 }
