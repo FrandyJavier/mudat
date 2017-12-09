@@ -21,6 +21,7 @@ public class DetalleAnuncioActivity extends AppCompatActivity {
     private EditText detalleEdit;
     private EditText condicionEdit;
     private EditText categoriaEdit;
+    private EditText usuarioEdit;
 
     public Anuncio anuncio;
 
@@ -40,6 +41,7 @@ public class DetalleAnuncioActivity extends AppCompatActivity {
             categoriaEdit.setText(anuncio.getCategoria().getDescripcion());
             condicionEdit.setText(anuncio.getCondicion());
             ubicacionEdit.setText(anuncio.getUbicacion());
+            usuarioEdit.setText(anuncio.getIdUsuario().getNombre());
             precioEdit.setText(anuncio.getPrecio().toString());
             detalleEdit.setText(anuncio.getDetalle());
         }
@@ -52,5 +54,6 @@ public class DetalleAnuncioActivity extends AppCompatActivity {
         ubicacionEdit  = findViewById(R.id.editTextUbicacion);
         precioEdit = findViewById(R.id.editTextPrecio);
         detalleEdit = findViewById(R.id.editTextDetalle);
+        usuarioEdit = findViewById(R.id.editTextUsuario);
     }
 }

@@ -78,6 +78,7 @@ public class RegAnuncioActivity extends AppCompatActivity {
         anuncio.setUbicacion(ubicacionEdit.getText().toString());
         anuncio.setPrecio(Double.valueOf(precioEdit.getText().toString()));
         anuncio.setDetalle(detalleEdit.getText().toString());
+        anuncio.setIdUsuario(MainActivity.usuarioActual);
 
         long paso = 0;
 

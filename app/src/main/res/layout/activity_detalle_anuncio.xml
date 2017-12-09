@@ -106,6 +106,20 @@
                 android:maxLines="10"
                 android:minLines="10"
                 android:scrollbars="vertical" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Creado Por"
+                android:textSize="15sp" />
+
+            <EditText
+                android:enabled="false"
+                android:id="@+id/editTextUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

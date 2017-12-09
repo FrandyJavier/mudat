@@ -5,6 +5,7 @@ package com.itla.mudat.entity;
  */
 
 public enum TipoUsuario {
+    ADMINISTRADOR,
     PUBLICADOR,
     CLIENTE
 }

@@ -11,6 +11,7 @@ import com.itla.mudat.entity.Usuario;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Frandy Javier AP on 11/27/2017.
@@ -30,7 +31,7 @@ public class AnunciosDbo {
         Anuncio anuncio = new Anuncio();
 
         if ((double) id > 0) {
-            anuncio = this.listar().get(id);
+            anuncio = this.listar(null).get(id);
         }
 
         return anuncio;
@@ -59,12 +60,13 @@ public class AnunciosDbo {
         ContentValues values = new ContentValues();
         values.put(Anuncio.IDCATEGORIA, anuncio.getCategoria().getId());
         values.put(Anuncio.IDUSUARIO, anuncio.getIdUsuario().toString());
-        values.put(Anuncio.FECHA, anuncio.getFecha().toString());
+        values.put(Anuncio.FECHA, anuncio.getFecha());
         values.put(Anuncio.CONDICION, anuncio.getCondicion());
         values.put(Anuncio.PRECIO, anuncio.getPrecio());
         values.put(Anuncio.TITULO, anuncio.getTitulo());
         values.put(Anuncio.UBICACION, anuncio.getUbicacion());
         values.put(Anuncio.DETALLE, anuncio.getDetalle());
+        values.put(Anuncio.IDUSUARIO, anuncio.getIdUsuario().getId());
         return values;
     }
 
@@ -76,13 +78,13 @@ public class AnunciosDbo {
         return retorno;
     }
 
-    public List<Anuncio> listar() {
+    public List<Anuncio> listar(String condicion) {
         List<Anuncio> anuncios = new ArrayList<>();
         SQLiteDatabase db = connection.getReadableDatabase();
 
         String[] columnas = new String[]{Anuncio.ID, Anuncio.IDCATEGORIA, Anuncio.IDUSUARIO, Anuncio.FECHA, Anuncio.CONDICION, Anuncio.PRECIO, Anuncio.TITULO, Anuncio.UBICACION, Anuncio.DETALLE};
 
-        Cursor cursor = db.query(Anuncio.class.getSimpleName(), columnas, null, null, null, null, null);
+        Cursor cursor = db.query(Anuncio.class.getSimpleName(), columnas, condicion, null, null, null, null);
 
         cursor.moveToFirst();
 

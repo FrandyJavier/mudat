@@ -28,6 +28,13 @@ public class PanelRegistroActivity extends AppCompatActivity {
     }
 
     public void verUsuarioClick(View view) {
+
+        if(MainActivity.usuarioActual.getTipoUsuario() != TipoUsuario.ADMINISTRADOR)
+        {
+            Toast.makeText(this,"No posee permiso para realizar esta operacion",Toast.LENGTH_LONG).show();
+            return;
+        }
+
         startActivity(new Intent(this, VisualizarUsuariosActivity.class));
     }
 

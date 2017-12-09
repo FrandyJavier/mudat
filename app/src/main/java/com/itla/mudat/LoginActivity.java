@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -365,12 +366,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                     if (paso) {
                         MainActivity.usuarioActual = usuario;
+
                         Utils.guardarPreferencia(LoginActivity.this, Utils.LOGIN_NAME, usuario.getEmail());
                         Utils.guardarPreferencia(LoginActivity.this, Utils.LOGIN_ID, usuario.getId().toString());
 
                         startActivity(new Intent(LoginActivity.this, PanelRegistroActivity.class));
                         finish();
                     }
+
                     return paso;
                 }
             }

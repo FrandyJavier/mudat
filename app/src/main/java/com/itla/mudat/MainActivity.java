@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private void buscarDatos() {
         AnunciosDbo db = new AnunciosDbo(this);
         ListView list = findViewById(R.id.listviewDatos);
-        AnunciosListAdapter adaptador = new AnunciosListAdapter(this, db.listar());
+        AnunciosListAdapter adaptador = new AnunciosListAdapter(this, db.listar(null));
         list.setAdapter(adaptador);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

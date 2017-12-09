@@ -17,6 +17,7 @@ import com.itla.mudat.entity.Usuario;
 import com.itla.mudat.view.adapters.AnunciosListAdapter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class VisualizarAnunciosActivity extends AppCompatActivity {
 
@@ -30,7 +31,8 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
     private void buscarDatos() {
         AnunciosDbo db = new AnunciosDbo(this);
         ListView list = findViewById(R.id.listviewDatos);
-        AnunciosListAdapter adaptador =  new AnunciosListAdapter(this,db.listar());
+
+        AnunciosListAdapter adaptador = new AnunciosListAdapter(this, db.listar(Anuncio.IDUSUARIO + "=" + MainActivity.usuarioActual.getId()));
         list.setAdapter(adaptador);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,7 +51,7 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         buscarDatos();
     }
