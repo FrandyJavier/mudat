@@ -57,6 +57,10 @@ public class AnunciosListAdapter extends BaseAdapter {
         return listado.get(position).getPrecio().toString();
     }
 
+    public String getItemCondicion(int position) {
+        return listado.get(position).getCondicion();
+    }
+
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
@@ -69,11 +73,13 @@ public class AnunciosListAdapter extends BaseAdapter {
         TextView titulo = view.findViewById(R.id.itemTitulo);
         TextView categoria = view.findViewById(R.id.itemCategoria);
         TextView precio = view.findViewById(R.id.itemPrecio);
+        TextView condicion = view.findViewById(R.id.itemCondicion);
 
         fecha.setText(getItemFecha(position));
         titulo.setText(getItemTitulo(position));
         categoria.setText(getItemCategoria(position));
         precio.setText("Precio: $" + getItemPrecio(position));
+        condicion.setText(getItemCondicion(position));
 
         return view;
     }
