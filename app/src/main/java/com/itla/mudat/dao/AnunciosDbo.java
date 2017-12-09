@@ -39,6 +39,23 @@ public class AnunciosDbo {
     public long crear(Anuncio anuncio) {
         SQLiteDatabase db = connection.getWritableDatabase();
 
+        long retorno = db.insert(Anuncio.class.getSimpleName(), Anuncio.ID, setValues(anuncio));
+
+        db.close();
+        return retorno;
+    }
+
+    public long editar(Anuncio anuncio) {
+        SQLiteDatabase db = connection.getWritableDatabase();
+
+        long retorno = db.update(Anuncio.class.getSimpleName(), setValues(anuncio),
+                Anuncio.ID + "= ?", new String[]{anuncio.getId().toString()});
+
+        db.close();
+        return retorno;
+    }
+
+    private ContentValues setValues(Anuncio anuncio) {
         ContentValues values = new ContentValues();
         values.put(Anuncio.IDCATEGORIA, anuncio.getCategoria().getId());
         values.put(Anuncio.IDUSUARIO, anuncio.getIdUsuario().toString());
@@ -48,9 +65,13 @@ public class AnunciosDbo {
         values.put(Anuncio.TITULO, anuncio.getTitulo());
         values.put(Anuncio.UBICACION, anuncio.getUbicacion());
         values.put(Anuncio.DETALLE, anuncio.getDetalle());
+        return values;
+    }
 
-        long retorno = db.insert(Anuncio.class.getSimpleName(), Anuncio.ID, values);
-
+    public long eliminar(int id) {
+        SQLiteDatabase db = connection.getWritableDatabase();
+        long retorno = db.delete(Anuncio.class.getSimpleName(),
+                Anuncio.ID + "= ?", new String[]{String.valueOf(id)});
         db.close();
         return retorno;
     }
@@ -74,7 +95,7 @@ public class AnunciosDbo {
             anuncio.setIdUsuario(usuario.buscar(cursor.getInt(cursor.getColumnIndex(Anuncio.IDUSUARIO))));
 
             anuncio.setId(cursor.getInt(cursor.getColumnIndex(Anuncio.ID)));
-            anuncio.setFecha(Date.valueOf(cursor.getString(cursor.getColumnIndex(Anuncio.FECHA))));
+            anuncio.setFecha(cursor.getString(cursor.getColumnIndex(Anuncio.FECHA)));
             anuncio.setCondicion(cursor.getString(cursor.getColumnIndex(Anuncio.CONDICION)));
             anuncio.setPrecio(cursor.getDouble(cursor.getColumnIndex(Anuncio.PRECIO)));
             anuncio.setTitulo(cursor.getString(cursor.getColumnIndex(Anuncio.TITULO)));

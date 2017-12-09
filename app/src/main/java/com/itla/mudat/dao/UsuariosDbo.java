@@ -42,9 +42,17 @@ public class UsuariosDbo {
 
     public Usuario buscar(int id) {
         Usuario usuario = new Usuario();
+        List<Usuario> listado = this.listar();
 
+        int index;
         if ((double) id > 0) {
-            usuario = this.listar().get(id);
+            for (int x = 0; x < listado.size(); x++) {
+                index = x;
+                if (listado.get(index).getId() == id) {
+                    usuario = listado.get(index);
+                    break;
+                }
+            }
         }
 
         return usuario;

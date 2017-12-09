@@ -33,15 +33,13 @@ public class VisualizarCategoriasActivity extends AppCompatActivity {
         CategoriasDbo db = new CategoriasDbo(this);
 
         ListView list = findViewById(R.id.listviewDatos);
-        CategoriasListAdapter adapter = new CategoriasListAdapter(this, db.listar());
+        CategoriasListAdapter adapter = new CategoriasListAdapter(this, db.listar(),false);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Categoria categoria = ((Categoria) arg0.getItemAtPosition(position));
-                Toast.makeText(VisualizarCategoriasActivity.this, "has hecho click sobre: " + categoria.getDescripcion(), Toast.LENGTH_LONG).show();
-
                 Intent i = new Intent(VisualizarCategoriasActivity.this, RegCategoriaActivity.class);
 
                 Bundle bundle = new Bundle();

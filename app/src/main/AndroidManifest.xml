@@ -4,6 +4,11 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,18 +38,29 @@
             android:label="@string/title_activity_reg_anuncios"
             android:parentActivityName=".VisualizarAnunciosActivity"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".VisualizarUsuariosActivity"
             android:label="@string/title_activity_cons_usuarios"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".PanelRegistroActivity" />
         <activity
             android:name=".VisualizarCategoriasActivity"
             android:label="@string/title_activity_cons_categorias"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".PanelRegistroActivity" />
         <activity
             android:name=".VisualizarAnunciosActivity"
             android:label="@string/title_activity_cons_anuncios"
+            android:parentActivityName=".PanelRegistroActivity" />
+        <activity
+            android:name=".DetalleAnuncioActivity"
+            android:label="@string/title_activity_detalle_anuncio"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".MainActivity" />
+
+        <activity android:name=".PanelRegistroActivity"
+            android:label="@string/title_activity_panel_registro"
             android:parentActivityName=".MainActivity" />
     </application>
 

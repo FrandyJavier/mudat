@@ -14,6 +14,7 @@ import com.itla.mudat.entity.Usuario;
 import com.itla.mudat.dao.UsuariosDbo;
 
 public class RegUsuarioActivity extends AppCompatActivity {
+    private Boolean editando = false;
 
     private EditText nombreEdit;
     private Spinner tipoUsuarioSpinner;
@@ -31,12 +32,7 @@ public class RegUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reg_usuario);
         usuario = new Usuario();
 
-        nombreEdit = findViewById(R.id.editTextNombre);
-        identificacionEdit = findViewById(R.id.editTextIdentificador);
-        emailEdit = findViewById(R.id.editTextEmail);
-        telefonoEdit = findViewById(R.id.editTextTelefono);
-        claveEdit = findViewById(R.id.editTextClave);
-
+        asignarEdits();
 
         tipoUsuarioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, TipoUsuario.values());
 
@@ -47,6 +43,8 @@ public class RegUsuarioActivity extends AppCompatActivity {
         Button borrarButton = findViewById(R.id.borrarButton);
 
         if (bundle != null) {
+            editando = true;
+
             usuario = (Usuario) bundle.getSerializable(Usuario.class.getSimpleName());
             borrarButton.setVisibility(View.VISIBLE);
 
@@ -78,7 +76,7 @@ public class RegUsuarioActivity extends AppCompatActivity {
 
         long paso = 0;
 
-        if(usuario.getId() <= 0){
+        if (!editando) {
            paso =  db.crear(usuario);
         }else{
             paso = db.editar(usuario);
@@ -100,5 +98,13 @@ public class RegUsuarioActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.msjGuardo, Toast.LENGTH_SHORT).show();
             finish();
         }
+    }
+
+    private void asignarEdits() {
+        nombreEdit = findViewById(R.id.editTextNombre);
+        identificacionEdit = findViewById(R.id.editTextIdentificador);
+        emailEdit = findViewById(R.id.editTextEmail);
+        telefonoEdit = findViewById(R.id.editTextTelefono);
+        claveEdit = findViewById(R.id.editTextClave);
     }
 }

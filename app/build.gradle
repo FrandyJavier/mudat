@@ -14,7 +14,7 @@ android {
         multiDexEnabled true
     }
 
-    testOptions{
+    testOptions {
         reportDir = "$project.buildDir/results/report"
         resultsDir = "project.buildDir/results"
     }

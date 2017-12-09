@@ -45,8 +45,6 @@ public class VisualizarUsuariosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 Usuario usuario = ((Usuario) arg0.getItemAtPosition(position));
-                Log.i(VisualizarUsuariosActivity.class.getSimpleName(), "has hecho click sobre: " + usuario.getNombre());
-
                 Intent i = new Intent(VisualizarUsuariosActivity.this, RegUsuarioActivity.class);
 
                 Bundle bundle = new Bundle();

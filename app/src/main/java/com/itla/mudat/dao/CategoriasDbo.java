@@ -43,10 +43,7 @@ public class CategoriasDbo {
     public long crear(Categoria categoria) {
         SQLiteDatabase db = connection.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(Categoria.DESCRIPCION, categoria.getDescripcion());
-
-        long retorno = db.insert(Categoria.class.getSimpleName(), Categoria.IDCATEGORIA, values);
+        long retorno = db.insert(Categoria.class.getSimpleName(), Categoria.IDCATEGORIA, setValues(categoria));
 
         db.close();
         return retorno;
@@ -55,18 +52,23 @@ public class CategoriasDbo {
     public long editar(Categoria categoria) {
         SQLiteDatabase db = connection.getWritableDatabase();
 
-        ContentValues values = new ContentValues();
-        values.put(Categoria.DESCRIPCION, categoria.getDescripcion());
-
-        long retorno = db.update(Categoria.class.getSimpleName(), values, Categoria.IDCATEGORIA + "= ?", new String[]{categoria.getId().toString()});
+        long retorno = db.update(Categoria.class.getSimpleName(), setValues(categoria),
+                Categoria.IDCATEGORIA + "= ?", new String[]{categoria.getId().toString()});
 
         db.close();
         return retorno;
     }
 
+    private ContentValues setValues(Categoria categoria) {
+        ContentValues values = new ContentValues();
+        values.put(Categoria.DESCRIPCION, categoria.getDescripcion());
+        return values;
+    }
+
     public long eliminar(int id) {
         SQLiteDatabase db = connection.getWritableDatabase();
-        long retorno = db.delete(Categoria.class.getSimpleName(), Categoria.IDCATEGORIA + "= ?", new String[]{String.valueOf(id)});
+        long retorno = db.delete(Categoria.class.getSimpleName(),
+                Categoria.IDCATEGORIA + "= ?", new String[]{String.valueOf(id)});
         db.close();
         return retorno;
     }

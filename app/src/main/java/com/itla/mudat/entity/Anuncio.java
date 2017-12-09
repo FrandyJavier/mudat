@@ -12,7 +12,7 @@ public class Anuncio implements Serializable {
     Integer id;
     Categoria categoria;
     Usuario idUsuario;
-    Date fecha;
+    String fecha;
     String condicion;
     Double precio;
     String titulo;
@@ -20,8 +20,8 @@ public class Anuncio implements Serializable {
     String detalle;
 
     public static final String ID = "id";
-    public static final String IDCATEGORIA = "idcategoria";
-    public static final String IDUSUARIO = "idusuario";
+    public static final String IDCATEGORIA = "idCategoria";
+    public static final String IDUSUARIO = "idUsuario";
     public static final String FECHA = "fecha";
     public static final String CONDICION = "condicion";
     public static final String PRECIO = "precio";
@@ -33,7 +33,7 @@ public class Anuncio implements Serializable {
         this.id = 0;
         this.categoria = new Categoria();
         this.idUsuario = new Usuario();
-        this.fecha = new Date();
+        this.fecha = "";
         this.condicion = "";
         this.precio = 0.0;
         this.titulo = "";
@@ -41,7 +41,7 @@ public class Anuncio implements Serializable {
         this.detalle = "";
     }
 
-    public Anuncio(Integer idAnuncio, Categoria categoria, Usuario idUsuario, Date fecha, String condicion, Double precio, String titulo, String ubicacion, String detalle) {
+    public Anuncio(Integer idAnuncio, Categoria categoria, Usuario idUsuario, String fecha, String condicion, Double precio, String titulo, String ubicacion, String detalle) {
         this.id = idAnuncio;
         this.categoria = categoria;
         this.idUsuario = idUsuario;
@@ -77,11 +77,11 @@ public class Anuncio implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

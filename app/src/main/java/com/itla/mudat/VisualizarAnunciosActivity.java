@@ -4,13 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.itla.mudat.dao.AnunciosDbo;
 import com.itla.mudat.dao.UsuariosDbo;
 import com.itla.mudat.entity.Anuncio;
+import com.itla.mudat.entity.Categoria;
 import com.itla.mudat.entity.Usuario;
+import com.itla.mudat.view.adapters.AnunciosListAdapter;
 
 import java.util.List;
 
@@ -25,16 +29,23 @@ public class VisualizarAnunciosActivity extends AppCompatActivity {
 
     private void buscarDatos() {
         AnunciosDbo db = new AnunciosDbo(this);
-
-        List<Anuncio> datos = db.listar();
         ListView list = findViewById(R.id.listviewDatos);
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
-
-        for (int x= 0; x <= datos.size() -1 ; x++){
-            adaptador.add(datos.get(x).getTitulo());
-        }
-
+        AnunciosListAdapter adaptador =  new AnunciosListAdapter(this,db.listar());
         list.setAdapter(adaptador);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                Anuncio anuncio = ((Anuncio) arg0.getItemAtPosition(position));
+                Intent i = new Intent(VisualizarAnunciosActivity.this, RegAnuncioActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Anuncio.class.getSimpleName(), anuncio);
+
+                i.putExtras(bundle);
+                startActivity(i);
+            }
+        });
     }
 
     @Override

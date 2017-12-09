@@ -12,6 +12,7 @@ import com.itla.mudat.entity.Categoria;
 
 public class RegCategoriaActivity extends AppCompatActivity {
 
+    Boolean editando = false;
     EditText descripcionEdit;
     Categoria categoria;
 
@@ -19,11 +20,15 @@ public class RegCategoriaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg_categorias);
+        categoria = new Categoria();
+
         Button borrarButton = findViewById(R.id.borrarButton);
         descripcionEdit = findViewById(R.id.editTextDescripcion);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
+            editando = true;
+
             categoria = (Categoria) bundle.getSerializable(Categoria.class.getSimpleName());
             borrarButton.setVisibility(View.VISIBLE);
             descripcionEdit.setText(categoria.getDescripcion());
@@ -32,7 +37,6 @@ public class RegCategoriaActivity extends AppCompatActivity {
 
     public void guardarClick(View view) {
         CategoriasDbo db = new CategoriasDbo(this);
-        categoria = new Categoria();
 
         if (!MainActivity.validarEntry(descripcionEdit)) {
             return;
@@ -42,7 +46,7 @@ public class RegCategoriaActivity extends AppCompatActivity {
 
         long paso = 0;
 
-        if (categoria.getId() <= 0) {
+        if (!editando) {
             paso = db.crear(categoria);
         } else {
             paso = db.editar(categoria);

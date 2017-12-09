@@ -24,7 +24,7 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/tv_signal"
+        android:id="@+id/itemSignal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
